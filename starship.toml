@@ -30,6 +30,7 @@ format = """
  $perl\
  $php\
  $python\
+ $rlang\
  $ruby\
  $rust\
  $scala\
@@ -38,7 +39,7 @@ format = """
  $zig\
  $package\
  $service_sshd\
- $env_var\
+ $aws\
  $cmd_duration\
  🡒  
 """
@@ -47,17 +48,13 @@ format = """
 # OS icon display : don't really need it, just added it anyway
 # =========================================================================================
 
-[character]
-success_symbol = '[🡒 ](bold green) '
-error_symbol = '[🡒 ](bold red) '
-
 # This is the default symbols table.
 [os.symbols]
 Alpaquita = "🔔 "
 Alpine = " "
 Amazon = " "
-Android = " "
-Arch = "A"
+Android = " "
+Arch = " "
 Artix = "🐧 "
 CentOS = " "
 Debian = " "
@@ -81,9 +78,10 @@ Windows = " "
 # =========================================================================================
 
 [aws]
-format = 'on [$symbol($profile)(\($region\))]($style) '
-symbol = '☁️'
+format = '[$symbol($profile)(\($region\))]($style) '
+symbol = '󰅟 '
 style = 'bold yellow'
+disabled = true
 
 [battery]
 full_symbol = ''
@@ -91,8 +89,10 @@ charging_symbol = '⚡️'
 discharging_symbol = '󱊤'
 
 [env_var.USER]
-format = '[$symbol $env_value](bold red) '
-symbol = ''
+# exluded the $env_value = username
+# symbol = '  '
+format = '[$symbol](bold cyan) '
+symbol = ' '
 default = 'unknown user'
 description = 'The current user'
 
@@ -101,6 +101,13 @@ description = 'The current user'
 # symbol = ''
 # default = 'unknown host'
 # description = 'The hostname of the computer'
+
+[character]
+success_symbol = '[🡒 ](bold green) '
+error_symbol = '[🡒 ](bold red) '
+
+[directory]
+truncation_length = 5
 
 [git_branch]
 symbol = ' '
@@ -134,13 +141,13 @@ added_style = 'bold blue'
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [hostname]
-ssh_only = true
-ssh_symbol = "🌐 "
-format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+ssh_only = false
+ssh_symbol = " 🌐"
+format = '[$ssh_symbol](bold red) on [$hostname](bold red) '
 disabled = false
 
 [package]
-format = 'pkg [ $version](208 bold) '
+format = 'ver [ $version](208 bold) '
 
 # =========================================================================================
 # Language Support
@@ -183,7 +190,7 @@ format = 'via [ $version]($style) '
 format = 'via [ $version]($style) '
 
 [ocaml]
-format = 'via [ $version]($style) '
+format = 'via [ $version]($style) '
 
 [perl]
 format = 'via [ $version]($style) '
@@ -193,6 +200,9 @@ format = 'via [ $version]($style) '
 
 [python]
 format = 'via [ $version]($style) '
+
+[rlang]
+format = 'via [ $version]($style) '
 
 [ruby]
 format = 'via [ $version]($style) '
