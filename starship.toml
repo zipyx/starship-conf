@@ -1,0 +1,199 @@
+# ~/.config/starship/starship.toml
+
+# all options
+# format = '$all'
+
+# custom
+format = """
+ $directory$git_branch$git_commit$git_status$git_metrics\
+ $c\
+ $cmake\
+ $deno\
+ $dotnet\
+ $elixir\
+ $golang\
+ $haskell\
+ $java\
+ $kotlin\
+ $lua\
+ $nodejs\
+ $ocaml\
+ $perl\
+ $php\
+ $python\
+ $ruby\
+ $rust\
+ $scala\
+ $terraform\
+ $vagrant\
+ $zig\
+ $package\
+ $service_sshd\
+ $env_var\
+ $cmd_duration\
+ 🡒  
+"""
+
+# This is the default symbols table.
+[os.symbols]
+Alpaquita = "🔔 "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = "A"
+Artix = "🐧 "
+CentOS = " "
+Debian = " "
+Fedora = "🎩 "
+Linux = "🐧 "
+Macos = " "
+Manjaro = " "
+MidnightBSD = "🌘 "
+Mint = "󰣭 "
+NixOS = "❄️ "
+OpenCloudOS = "☁️ "
+Raspbian = " "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+Ubuntu = " "
+Unknown = "❓ "
+Windows = " "
+
+[aws]
+format = 'on [$symbol($profile)(\($region\))]($style) '
+symbol = '☁️'
+style = 'bold yellow'
+
+[battery]
+full_symbol = ''
+charging_symbol = '⚡️'
+discharging_symbol = '󱊤'
+
+[env_var.USER]
+format = '[$symbol $env_value](bold red) '
+symbol = ''
+default = 'unknown user'
+description = 'The current user'
+
+# [env_var.HOSTNAME]
+# format = '[$symbol $env_value](bold yellow) '
+# symbol = ''
+# default = 'unknown host'
+# description = 'The hostname of the computer'
+
+[git_branch]
+symbol = ' '
+truncation_length = 30
+truncation_symbol = ' '
+
+[git_commit]
+commit_hash_length = 8
+tag_symbol = ' '
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[ PICKING](bold red)'
+
+[git_status]
+format = '([\[$ahead$diverged$behind$ahead_behind$conflicted$up_to_date|$untracked$stashed$modified$staged$renamed$deleted\]]($style) )'
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+conflicted = '❌'
+up_to_date = '[✓](bold green)'
+untracked = 'U'
+stashed = '[＄](bold blue)'
+modified = '[M](bold yellow)'
+staged = '[++\($count\)](green)'
+renamed = '>'
+deleted = 'D'
+
+[git_metrics]
+added_style = 'bold blue'
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[hostname]
+ssh_only = true
+ssh_symbol = "🌐 "
+format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+disabled = false
+
+[package]
+format = 'pkg [ $version](208 bold) '
+
+# =========================================================================================
+# Language Support
+# =========================================================================================
+
+[docker_context]
+format = 'via [ $context](blue bold) '
+
+[c]
+format = 'via [$name $version]($style) '
+
+[cmake]
+format = 'via [ $version]($style) '
+
+[deno]
+format = 'via [אָ $version]($style) '
+
+[dotnet]
+format = 'via [ $version]($style) '
+
+[elixir]
+format = 'via [ $version]($style) '
+
+[golang]
+format = 'via [ $version](bold cyan) '
+
+[haskell]
+format = 'via [ $version]($style) '
+
+[java]
+format = 'via [ $version]($style) '
+
+[kotlin]
+format = 'via [ $version]($style) '
+
+[lua]
+format = 'via [ $version]($style) '
+
+[nodejs]
+format = 'via [ $version]($style) '
+
+[ocaml]
+format = 'via [ $version]($style) '
+
+[perl]
+format = 'via [ $version]($style) '
+
+[php]
+format = 'via [ $version]($style) '
+
+[python]
+format = 'via [ $version]($style) '
+
+[ruby]
+format = 'via [ $version]($style) '
+
+[rust]
+format = 'via [⚙️ $version]($style) '
+
+[scala]
+format = 'via [ $version]($style) '
+
+[terraform]
+format = 'via [ $version$workspace]($style) '
+
+[vagrant]
+format = 'via [ $version]($style) '
+
+[zig]
+format = 'via [⚡️ $version]($style) '
+
+[custom.service_sshd]
+command = "systemctl status sshd | grep Active | awk '{print $1, $2, $3}'"
+detect_files = ["/usr/sbin/sshd"]
+require_repo = false
+format = 'via [󱘖  $output]($bold cyan) '
+shell = ["bash", "-NoProfile", '-Command']
