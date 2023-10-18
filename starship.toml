@@ -41,7 +41,7 @@ format = """
  $service_sshd\
  $aws\
  $cmd_duration\
- 🡒  
+   
 """
 
 # =========================================================================================
@@ -103,8 +103,8 @@ description = 'The current user'
 # description = 'The hostname of the computer'
 
 [character]
-success_symbol = '[🡒 ](bold green) '
-error_symbol = '[🡒 ](bold red) '
+success_symbol = '[ ](bold green) '
+error_symbol = '[ ](bold red) '
 
 [directory]
 truncation_length = 5
